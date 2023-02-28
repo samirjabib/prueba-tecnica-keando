@@ -4,6 +4,7 @@ import {SafeAreaView, StyleSheet} from 'react-native';
 
 import {Logo, FormLogin, Fab} from '../components';
 import {useAuthStore} from '../../../hook/useAuthStore';
+import { getUser } from '../helpers';
 
 const initialForm = {
   email: '',
@@ -19,18 +20,22 @@ interface Props extends StackScreenProps<any, any> {}
 
 export const Login = ({navigation}: Props) => {
   const [form, setForm] = useState<Form>(initialForm);
-
-  console.log(form.email, form.password);
-
   const {handleLogin, handleLogout, name} = useAuthStore();
+  console.log(form)
 
   const navigate = () => navigation.navigate('Home');
+
+  const onSubmit = () => {
+      const user = getUser(form)
+      console.log(user, ' este es el user')
+      console.log('hice click')
+  };
 
   return (
     <SafeAreaView style={styles.container}>
       <Logo />
       <FormLogin form={form} setForm={setForm} />
-      <Fab navigator={navigate} />
+      <Fab navigator={navigate} onSubmit={onSubmit} />
     </SafeAreaView>
   );
 };

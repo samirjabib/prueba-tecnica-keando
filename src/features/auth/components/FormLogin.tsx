@@ -1,7 +1,13 @@
-import {View, StyleSheet, useWindowDimensions} from 'react-native';
+import {
+  View,
+  StyleSheet,
+  useWindowDimensions,
+  TouchableNativeFeedback,
+} from 'react-native';
 import AntDesing from 'react-native-vector-icons/AntDesign';
 import {TextInput} from 'react-native-gesture-handler';
 import React from 'react';
+import {useState} from 'react';
 
 interface Form {
   email: string;
@@ -14,10 +20,11 @@ interface Props {
 }
 
 export const FormLogin = ({setForm, form}: Props) => {
+  const [showPassword, setShowPassword] = useState<boolean>(true);
+
   const {width} = useWindowDimensions();
   const {email, password} = form;
 
-  console.log(email, password);
 
   return (
     <View style={styles.formContainer}>
@@ -36,14 +43,17 @@ export const FormLogin = ({setForm, form}: Props) => {
       </View>
       <View style={{...styles.inputContainer, width: width * 0.8}}>
         <View style={styles.icon}>
-          <AntDesing name="lock1" style={{color: '#54b0db', fontSize: 34}} />
+            <AntDesing
+              name="lock1"
+              style={{color: '#54b0db', fontSize: 34, zIndex: 5}}
+            />
         </View>
         <TextInput
           value={password}
-          onChangeText={value => setForm({...form, email: value})}
+          onChangeText={value => setForm({...form, password: value})}
           placeholderTextColor={'#cacdd3'}
           placeholder="Password"
-          secureTextEntry={true}
+          secureTextEntry={showPassword}
           style={{...styles.input, width: width * 0.8}}
         />
         <AntDesing

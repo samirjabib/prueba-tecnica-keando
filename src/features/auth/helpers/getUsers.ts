@@ -1,23 +1,26 @@
-import data from '../../../data/data.json'
+import data from '../../../data/data.json';
 
-interface User{
-    uid:string,
-    email:string,
-    password:string,
+interface Form {
+  uid?: string;
+  email: string;
+  password: string;
 }
 
+console.log(data);
+
+export const getUser = (form: Form) => {
+  const {email, password} = form;
+
+  const emailUser = email.toLowerCase();
+  const passwordUser = password.toLowerCase();
+
+  console.log(emailUser, 'email user');
+
+  const user = data.filter(
+    user => user.email === emailUser && user.password === passwordUser,
+  );
 
 
-export const getUser = (user:User) => {
 
-    if(!user){
-        return { message:`complete the fields`, status:404}
-    }
-
-    const { email, password } = user
-
-    
-
-
-
-}
+  return user;
+};

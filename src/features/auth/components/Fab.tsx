@@ -5,15 +5,15 @@ import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 
 
-export const Fab = ({navigator}:any) => {
-  const {width, height} = useWindowDimensions();
+export const Fab = ({onSubmit}:any) => {
+  const { width } = useWindowDimensions();
 
 
 
   return (
     <View style={styles.buttonContainer}>
       <TouchableNativeFeedback
-        onPress={navigator}
+        onPress={onSubmit}
         background={TouchableNativeFeedback.Ripple('blue', true, 30)}>
         <View style={{...styles.button, width: width * 0.8}}>
           <Text>Ingresar</Text>
