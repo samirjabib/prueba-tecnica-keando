@@ -1,0 +1,19 @@
+[
+  {
+    "uid": "uid0001",
+    "email": "genoma3d@gmail.com",
+    "password": "12345678"
+  },
+
+  {
+    "uid": "uid0002",
+    "email": "gerardom@gmail.com",
+    "password": "12345678"
+  },
+
+  {
+    "uid": "uid0003",
+    "email": "lecuesta@gmail.com",
+    "password": "12345678"
+  }
+]
