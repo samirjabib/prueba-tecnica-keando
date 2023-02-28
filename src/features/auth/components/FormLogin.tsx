@@ -1,5 +1,4 @@
 import {View, StyleSheet, useWindowDimensions} from 'react-native';
-import {useState} from 'react';
 import AntDesing from 'react-native-vector-icons/AntDesign';
 import {TextInput} from 'react-native-gesture-handler';
 import React from 'react';
@@ -9,19 +8,16 @@ interface Form {
   password: string;
 }
 
-const initialForm = {
-  email: '',
-  password: '',
-};
+interface Props {
+  form: Form;
+  setForm: (value: Form) => void;
+}
 
-export const FormLogin = () => {
+export const FormLogin = ({setForm, form}: Props) => {
   const {width} = useWindowDimensions();
-
-  const [form, setForm] = useState<Form>(initialForm);
-
   const {email, password} = form;
 
-  console.log(email, password)
+  console.log(email, password);
 
   return (
     <View style={styles.formContainer}>
@@ -31,11 +27,7 @@ export const FormLogin = () => {
         </View>
         <TextInput
           value={email}
-          onChangeText={value =>
-            setForm(prev => {
-              return {...prev, email: value};
-            })
-          }
+          onChangeText={value => setForm({...form, email: value})}
           placeholderTextColor={'#cacdd3'}
           placeholder="Correo Electronico"
           textContentType="emailAddress"
@@ -48,11 +40,7 @@ export const FormLogin = () => {
         </View>
         <TextInput
           value={password}
-          onChangeText={value =>
-            setForm(prev => {
-              return {...prev, password: value};
-            })
-          }
+          onChangeText={value => setForm({...form, email: value})}
           placeholderTextColor={'#cacdd3'}
           placeholder="Password"
           secureTextEntry={true}
