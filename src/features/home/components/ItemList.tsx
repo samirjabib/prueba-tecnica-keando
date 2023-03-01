@@ -14,7 +14,7 @@ export const ItemList = ({user}: Props) => {
     <View style={styles.itemContainer}>
       <View style={styles.firstColumn}>
         <View style={styles.iconContainer}>
-          <AntDesing name="car" style={{color: '#bñ', fontSize: 34}} />
+          <AntDesing name="car" style={{color: 'white', fontSize: 34}} />
         </View>
         <View style={styles.dataContainer}>
           <Text style={styles.companyRol}>{user.companyRol}</Text>
