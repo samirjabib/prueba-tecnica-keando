@@ -1,0 +1,62 @@
+[
+    {
+      "uid": "uid0001",
+      "firstName": "Leandro Alberto",
+      "lastName": "Gonzalez Orozco",
+      "picture": "https://firebasestorage.googleapis.com/v0/b/portal-keando.appspot.com/o/img%2Fprofile-picture%2F001.jpg?alt=media&token=dbf180a6-9aa3-42ea-be42-21f7954dce22",
+      "phone": 3226601205,
+      "id": 71797450,
+      "email": "genoma3d@gmail.com",
+      "country": "Colombia",
+      "state": "Antioquia",
+      "city": "Bello",
+      "address": "Diagonal 59 avd 38 90",
+      "birthday": "1979-11-04",
+      "mainRol": "user/mainrol/admin",
+      "companyRol": "user/companyrol/gerente",
+      "workingIn": ["parks/parqueadero1", "parks/parqueadero2"],
+      "modules": [],
+      "badge": ["badge/free"]
+    },
+  
+    {
+      "uid": "uid0002",
+      "firstName": "Gerardo",
+      "lastName": "Montoya",
+      "picture": "https://firebasestorage.googleapis.com/v0/b/portal-keando.appspot.com/o/img%2Fprofile-picture%2F002.jpg?alt=media&token=f7761490-fe07-4e57-9486-9be00fe8544b",
+      "phone": 322000002,
+      "id": 11797451,
+      "email": "gerardom@gmail.com",
+      "country": "Colombia",
+      "state": "Cundinamarca",
+      "city": "Bogotá",
+      "address": "59 avd 38 90",
+      "birthday": "1969-05-08",
+      "mainRol": "user/mainrol/admin",
+      "companyRol": "user/companyrol/gerente",
+      "workingIn": ["parks/zona 1"],
+      "modules": [],
+      "badge": ["badge/free"]
+    },
+  
+    {
+      "uid": "uid0003",
+      "firstName": "Sara Milena",
+      "lastName": "Le Cuesta",
+      "picture": "https://firebasestorage.googleapis.com/v0/b/portal-keando.appspot.com/o/img%2Fprofile-picture%2F003.jpg?alt=media&token=979a4f4a-3b17-49ed-b7c5-eeac4708cd5c",
+      "phone": 322000003,
+      "id": 31797453,
+      "email": "lecuesta@gmail.com",
+      "country": "Colombia",
+      "state": "Antioquia",
+      "city": "Medellín",
+      "address": "Avd 38 90",
+      "birthday": "1980-013-11",
+      "mainRol": "user/mainrol/admin",
+      "companyRol": "user/companyrol/gerente",
+      "workingIn": ["parks/poblado"],
+      "modules": [],
+      "badge": ["badge/free"]
+    }
+  ]
+  
