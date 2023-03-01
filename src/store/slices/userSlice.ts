@@ -1,5 +1,5 @@
-import {createSlice, PayloadAction } from '@reduxjs/toolkit';
-import data from '../../data/data2.json'
+import {createSlice } from '@reduxjs/toolkit';
+import data2 from '../../data/data2.json'
 
 export interface UsersPark {
   uid:        string;
@@ -27,7 +27,7 @@ interface ParksUser{
 }
 
 const initialState: ParksUser = {
-    users:data
+    users:data2
 }
 
 export const userSlice = createSlice({
