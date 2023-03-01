@@ -25,10 +25,15 @@ export const Login = ({navigation}: Props) => {
 
   const navigate = () => navigation.navigate('Home');
 
+  
+
   const onSubmit = () => {
       const user = getUser(form)
-      console.log(user, ' este es el user')
-      console.log('hice click')
+      console.log(user)
+      handleLogin(user)
+      if(user){
+        navigate()
+      }
   };
 
   return (

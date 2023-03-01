@@ -1,4 +1,5 @@
 import {createSlice, PayloadAction } from '@reduxjs/toolkit';
+import data from '../../data/data.json'
 
 interface User{
   uid:string,
@@ -11,17 +12,15 @@ interface ParksUser{
 }
 
 const initialState: ParksUser = {
-    users:[]
+    users:data
 }
 
-export const authSlice = createSlice({
-  name: "auth",
+export const userSlice = createSlice({
+  name: "user",
   initialState,
   reducers: {
-    getUsers: (state, {payload}:PayloadAction<User[]>) => {
-        state.users = payload
-    }
+    
   },
 });
 
-export const { getUsers } = authSlice.actions
+

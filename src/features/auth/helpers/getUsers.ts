@@ -14,7 +14,6 @@ export const getUser = (form: Form) => {
   const emailUser = email.toLowerCase();
   const passwordUser = password.toLowerCase();
 
-  console.log(emailUser, 'email user');
 
   const user = data.filter(
     user => user.email === emailUser && user.password === passwordUser,
@@ -22,5 +21,5 @@ export const getUser = (form: Form) => {
 
 
 
-  return user;
+  return user[0];
 };
