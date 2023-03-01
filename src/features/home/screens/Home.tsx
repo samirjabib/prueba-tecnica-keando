@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: '#747474',
     marginHorizontal:20,
-    marginTop:60,
+    marginTop:20,
     marginBottom:40,
     fontWeight:'600',
     fontStyle:'italic'

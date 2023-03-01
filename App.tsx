@@ -6,13 +6,15 @@ import {store} from './src';
 import {Provider} from 'react-redux';
 import {StackNavigator} from './src/navigator/StackNavigator';
 import { persistor } from './src/store/store';
+import { BottonTab } from './src/navigator/Tabs';
 
 function App(): JSX.Element {
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
       <NavigationContainer>
-        <StackNavigator />
+        {/* <StackNavigator /> */}
+        <BottonTab/>
       </NavigationContainer>
       </PersistGate>
     </Provider>
