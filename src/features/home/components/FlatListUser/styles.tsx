@@ -1,8 +1,10 @@
 import { StyleSheet } from 'react-native';
 
-
-export const styles = StyleSheet.create({
-    dataContainer: {},
+const styles = StyleSheet.create({
+    dataContainer:{
+      flex:1,
+      backgroundColor: '#ffffff',
+    },
     companyRol: {
       fontStyle:'italic',
       color: '#5e5e5e',
@@ -37,11 +39,17 @@ export const styles = StyleSheet.create({
       borderRadius: 8,
       alignItems: 'center',
       justifyContent: 'center',
+      marginBottom:10,
     },
     firstColumn: {
       alignItems:'center',
       flexDirection:'row',
       gap:10,
     },
+    
+    icon:{
+      color: 'white', fontSize: 34,
+    }
   });
   
+  export default styles

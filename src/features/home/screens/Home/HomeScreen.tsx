@@ -1,10 +1,18 @@
-import {Text, View, StyleSheet, TouchableOpacity, Button} from 'react-native';
-import {useCallback, useMemo, useRef} from 'react';
+import {View, FlatList} from 'react-native';
+import {useCallback, useRef} from 'react';
+
 import {useUserHook} from '../../../../hook/useUsersHook';
-import {useState} from 'react';
-import {ItemList} from '../../components/ItemList';
-import {BottomSheetRefProps, ButtonSheet} from '../../components';
-import AntDesing from 'react-native-vector-icons/AntDesign';
+import {
+  BottomSheetRefProps,
+  ButtonSheet,
+  FlatListUsers,
+  Header,
+  ItemSeparator,
+  MenuContainer
+} from '../../components';
+
+import styles from './styles';
+import {globalStyles} from '../../../../theme/appTheme';
 
 export const HomeScreen = () => {
   const {users} = useUserHook();
@@ -21,51 +29,22 @@ export const HomeScreen = () => {
 
   return (
     <>
-      <View style={styles.container}>
-        <View style={styles.headerContainer}>
-          <Text style={styles.title}>Usuarios</Text>
-          <View>
-          <TouchableOpacity onPress={onPress}>
-            <Text>
-              <AntDesing name="menufold" color={'black'} size={25} />
-            </Text>
-          </TouchableOpacity>
-          </View>
-        </View>
-
-        <View style={styles.itemsContainer}>
-          {users?.map(user => {
-            return <ItemList key={user.id} user={user} />;
-          })}
+      <View style={globalStyles.container}>
+        <View style={styles.container}>
+          <FlatList
+            data={users}
+            renderItem={({item}) => <FlatListUsers user={item} />}
+            ListHeaderComponent={() => (
+              <Header title="Menu" onPress={onPress} isActive={ref?.current?.isActive()}/>
+            )}
+            keyExtractor={item => item.uid}
+            ItemSeparatorComponent={() => <ItemSeparator />}
+          />
         </View>
       </View>
       <ButtonSheet ref={ref}>
-        <View style={{flex:1, backgroundColor:'orange'}}/>
+        <MenuContainer/>
       </ButtonSheet>
     </>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#ffffff',
-  },
-  title: {
-    fontSize: 20,
-    color: '#747474',
-    fontWeight: '600',
-    fontStyle: 'italic',
-  },
-  itemsContainer: {
-    gap: 30,
-  },
-  headerContainer: {
-    flexDirection:'row',
-    justifyContent:'space-between',
-    alignItems:'center',
-    marginHorizontal: 20,
-    marginTop: 20,
-    marginBottom: 40,
-  },
-});

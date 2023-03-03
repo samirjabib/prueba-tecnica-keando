@@ -35,7 +35,6 @@ export const LoginScreen = ({navigation}: Props) => {
 
   const onSubmit = () => {
       const user = getUser(form)
-      console.log(user,' soy el usuario')
 
       handleLogin(user)
 

@@ -23,9 +23,6 @@ export const MainStackNavigator = () => {
           <Stack.Screen name="SettingsScreen" component={SettingsScreen} />
           <Stack.Screen name="AddReservation" component={AddReservation} />
           <Stack.Screen name="MapsScreen" component={MapsScreen} />
-
-
-
         </Stack.Group>
       ) : (
         <Stack.Screen name="Login" component={LoginScreen} />
