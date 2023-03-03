@@ -3,15 +3,21 @@ import {useCallback, useMemo, useRef} from 'react';
 import {useUserHook} from '../../../hook/useUsersHook';
 import {useState} from 'react';
 import {ItemList} from '../components/ItemList';
-import {ButtonSheet} from '../components';
+import {BottomSheetRefProps, ButtonSheet} from '../components';
 import AntDesing from 'react-native-vector-icons/AntDesign';
 
 export const HomeScreen = () => {
   const {users} = useUserHook();
+  const ref = useRef<BottomSheetRefProps>(null);
 
-  const [show, setShow] = useState<boolean>(true);
-  const BottomSheetRef = useRef(null);
-  const snapPoints = useMemo(() => ['25%', '50%'], []);
+  const onPress = useCallback(() => {
+    const isActive = ref?.current?.isActive();
+    if (isActive) {
+      ref?.current?.scrollTo(0);
+    } else {
+      ref?.current?.scrollTo(-200);
+    }
+  }, []);
 
   return (
     <>
@@ -23,11 +29,19 @@ export const HomeScreen = () => {
           })}
         </View>
         <View style={styles.bottonNavBar}>
-          <Button title="home" />
-          <AntDesing name="menu-fold" color={'white'} size={30} />
+          <TouchableOpacity>
+            <Text>
+              <AntDesing name="home" color={'white'} size={30} />
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Text>
+              <AntDesing name="menu-fold" color={'white'} size={30} />
+            </Text>
+          </TouchableOpacity>
         </View>
       </View>
-      <ButtonSheet />
+      <ButtonSheet ref={ref} />
     </>
   );
 };
