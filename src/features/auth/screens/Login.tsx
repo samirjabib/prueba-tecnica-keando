@@ -1,6 +1,6 @@
 import {StackScreenProps} from '@react-navigation/stack';
 import {useState} from 'react';
-import {SafeAreaView, StyleSheet} from 'react-native';
+import { SafeAreaView, StyleSheet } from 'react-native';
 
 import {Logo, FormLogin, Fab} from '../components';
 import {useAuthStore} from '../../../hook/useAuthStore';
@@ -20,20 +20,26 @@ interface Props extends StackScreenProps<any, any> {}
 
 export const Login = ({navigation}: Props) => {
   const [form, setForm] = useState<Form>(initialForm);
-  const {handleLogin, handleLogout, name} = useAuthStore();
-  console.log(form)
+  const {handleLogin, handleLogout, status, errorLogout, errorMessage } = useAuthStore();
+  console.log(status)
+
+  if(status === 'checking'){
+    handleLogout()
+  }
+
+
 
   const navigate = () => navigation.navigate('Home');
 
-  
+
 
   const onSubmit = () => {
       const user = getUser(form)
-      console.log(user)
+      console.log(user,' soy el usuario')
+
       handleLogin(user)
-      if(user){
-        navigate()
-      }
+
+   
   };
 
   return (

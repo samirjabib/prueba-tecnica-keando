@@ -20,6 +20,5 @@ export const getUser = (form: Form) => {
   );
 
 
-
   return user[0];
 };

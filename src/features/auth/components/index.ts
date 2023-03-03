@@ -1,3 +1,3 @@
 export * from './Logo';
 export * from './FormLogin'
-export * from './Fab'
+export * from './Button'

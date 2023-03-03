@@ -1,1 +1,1 @@
-export * from './StackNavigator'
+export * from './MainStackNavigator'

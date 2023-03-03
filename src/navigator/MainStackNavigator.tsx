@@ -1,5 +1,6 @@
 import {createStackNavigator} from '@react-navigation/stack';
-import {Home, Login} from '../features';
+import {HomeScreen, Login} from '../features';
+import { BottonTab } from '../features/home/navigator';
 import {useAuthStore} from '../hook/useAuthStore';
 
 export type RootStackParamList = {
@@ -9,13 +10,12 @@ export type RootStackParamList = {
 
 const Stack = createStackNavigator<RootStackParamList>();
 
-export const StackNavigator = () => {
-  const {uid} = useAuthStore();
-  console.log(uid, 'in the navigator');
+export const MainStackNavigator = () => {
+  const { status } = useAuthStore();
 
   return <Stack.Navigator screenOptions={{ headerShown: false }}>
-  {uid ? 
-      <Stack.Screen name='Home' component={Home} />
+  {status === 'authenticated' ? 
+      <Stack.Screen name='Home' component={HomeScreen} />      
       : <Stack.Screen name='Login' component={Login} />
   }
 </Stack.Navigator>

@@ -24,6 +24,8 @@ export const FormLogin = ({setForm, form}: Props) => {
 
   const {width} = useWindowDimensions();
   const {email, password} = form;
+  
+
 
 
   return (
@@ -33,6 +35,7 @@ export const FormLogin = ({setForm, form}: Props) => {
           <AntDesing name="user" style={{color: '#54b0db', fontSize: 34}} />
         </View>
         <TextInput
+          
           value={email}
           onChangeText={value => setForm({...form, email: value})}
           placeholderTextColor={'#cacdd3'}

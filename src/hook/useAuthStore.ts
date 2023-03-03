@@ -8,8 +8,9 @@ interface User {
   password: string;
 }
 
+
 export const useAuthStore = () => {
-  const { name, password, uid} = useSelector((state: RootState) => state.auth);
+  const { email, password, uid, status, errorMessage} = useSelector((state: RootState) => state.auth);
 
   const dispatch = useDispatch();
 
@@ -17,18 +18,24 @@ export const useAuthStore = () => {
     dispatch(onLogin(user));
   };
 
-  const handleLogout = () => {
-    dispatch(onLogout('Esta cuenta no existe'));
+  const errorLogout = ( ) => {
+    dispatch(onLogout('No existe usuario'));
+  };
+  const handleLogout = ( ) => {
+    dispatch(onLogout(''));
   };
 
   return {
     //Propierties
-    name,
+    email,
     password,
     uid,
+    status,
+    errorMessage,
 
     //Methods
     handleLogin,
     handleLogout,
+    errorLogout,
   };
 };

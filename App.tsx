@@ -1,26 +1,26 @@
 import 'react-native-gesture-handler';
 import {NavigationContainer} from '@react-navigation/native';
 import {PersistGate} from 'redux-persist/integration/react';
-
+import {StatusBar} from 'react-native';
 import {store} from './src';
 import {Provider} from 'react-redux';
-import {StackNavigator} from './src/navigator/StackNavigator';
 import {persistor} from './src/store/store';
-import {BottonTab} from './src/navigator/Tabs';
-import { View, StyleSheet } from 'react-native';
+import {View} from 'react-native';
+import {MainStackNavigator} from './src/navigator/MainStackNavigator';
+import {GestureHandlerRootView} from 'react-native-gesture-handler';
 
 function App(): JSX.Element {
   return (
-    <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
-        <View style={{flex:1, backgroundColor:'white'}}>
+    <GestureHandlerRootView style={{flex: 1, marginTop: 24}}>
+      <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
           <NavigationContainer>
-            {/* <StackNavigator /> */}
-            <BottonTab />
+            <StatusBar translucent />
+            <MainStackNavigator />
           </NavigationContainer>
-        </View>
-      </PersistGate>
-    </Provider>
+        </PersistGate>
+      </Provider>
+    </GestureHandlerRootView>
   );
 }
 

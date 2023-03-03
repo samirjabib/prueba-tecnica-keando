@@ -7,11 +7,13 @@ interface Props {
   user: UsersPark;
 }
 
+import { globalStyles } from '../../../theme/appTheme';
+
 export const ItemList = ({user}: Props) => {
-  console.log(user);
+
 
   return (
-    <View style={styles.itemContainer}>
+    <View style={globalStyles.container}>
       <View style={styles.firstColumn}>
         <View style={styles.iconContainer}>
           <AntDesing name="car" style={{color: 'white', fontSize: 34}} />
@@ -25,30 +27,17 @@ export const ItemList = ({user}: Props) => {
         </View>
       </View>
       <View style={styles.emailContainer}>
-        <View style={styles.emailButton}></View>
+        <View style={styles.emailButton}><Text>{user.state}</Text></View>
         <Text style={styles.email}>{user.email}</Text>
       </View>
     </View>
   );
 };
 
+
+
+
 const styles = StyleSheet.create({
-  itemContainer: {
-    padding: 20,
-    backgroundColor: '#ffffff',
-    borderColor: 'black',
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    flexDirection: 'column',
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    marginHorizontal: 20,
-    elevation: 5,
-    gap: 20,
-  },
   dataContainer: {},
   companyRol: {
     fontStyle:'italic',
