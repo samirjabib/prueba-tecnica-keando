@@ -38,7 +38,13 @@ export const ButtonSheet = React.forwardRef<BottomSheetRefProps, BottomSheetProp
 
   const scrollTo = useCallback((destination: number) => {
     'worklet';
-    active.value = destination !== 0;
+    if(destination === 0){
+        active.value = false
+    } else {
+        active.value = true
+    }
+
+    active.value = destination !==0
 
     translateY.value = withSpring(destination, {damping: 50});
   }, []);
