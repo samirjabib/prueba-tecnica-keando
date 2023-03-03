@@ -34,7 +34,7 @@ export const HomeScreen = () => {
               <AntDesing name="home" color={'white'} size={30} />
             </Text>
           </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={onPress}>
             <Text>
               <AntDesing name="menu-fold" color={'white'} size={30} />
             </Text>

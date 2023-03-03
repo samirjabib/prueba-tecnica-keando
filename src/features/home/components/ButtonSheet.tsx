@@ -12,6 +12,7 @@ import Animated, {
 import {useEffect, useCallback} from 'react';
 import AntDesing from 'react-native-vector-icons/AntDesign';
 import React from 'react';
+import { useImperativeHandle } from 'react';
 
 const {height: SCREEN_HEIGHT} = Dimensions.get('screen');
 const MAX_TRANSLATE_Y = -SCREEN_HEIGHT + 50;
@@ -27,6 +28,9 @@ export type BottomSheetRefProps = {
 };
 
 export const ButtonSheet = React.forwardRef<BottomSheetRefProps, BottomSheetProps>(  ({children}, ref) => {
+
+
+
   const active = useSharedValue(false);
   const translateY = useSharedValue(0);
   const isPressed = useSharedValue(false);
@@ -38,6 +42,17 @@ export const ButtonSheet = React.forwardRef<BottomSheetRefProps, BottomSheetProp
 
     translateY.value = withSpring(destination, {damping: 50});
   }, []);
+
+  const isActive = useCallback(() => {
+    return active.value;
+  }, []);
+
+  useImperativeHandle(ref, () => ({ scrollTo, isActive }), [
+    scrollTo,
+    isActive,
+  ]);
+
+  
 
   const gesture = Gesture.Pan()
     .onBegin(() => {
@@ -59,6 +74,9 @@ export const ButtonSheet = React.forwardRef<BottomSheetRefProps, BottomSheetProp
         }
       }
     });
+
+
+
 
   const animatedStyles = useAnimatedStyle(() => {
     const borderRadius = interpolate(
