@@ -18,7 +18,7 @@ interface Form {
 
 interface Props extends StackScreenProps<any, any> {}
 
-export const Login = ({navigation}: Props) => {
+export const LoginScreen = ({navigation}: Props) => {
   const [form, setForm] = useState<Form>(initialForm);
   const {handleLogin, handleLogout, status, errorLogout, errorMessage } = useAuthStore();
   console.log(status)

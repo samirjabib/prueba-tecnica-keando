@@ -44,7 +44,7 @@ export const ButtonSheet = React.forwardRef<BottomSheetRefProps, BottomSheetProp
         active.value = true
     }
 
-    active.value = destination !==0
+    // active.value = destination !==0
 
     translateY.value = withSpring(destination, {damping: 50});
   }, []);
@@ -106,6 +106,7 @@ export const ButtonSheet = React.forwardRef<BottomSheetRefProps, BottomSheetProp
     <GestureDetector gesture={gesture} >
       <Animated.View style={[styles.bottonSheetContainer, animatedStyles]}>
         <View style={styles.line} />
+        {children}
       </Animated.View>
     </GestureDetector>
   )})
