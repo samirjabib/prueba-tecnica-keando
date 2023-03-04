@@ -25,30 +25,31 @@ export const usePermissionsHook = () => {
     } else {
       permissionsStatus = await request(
         PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION,
-      ); 
+      );
 
-    if (permissionsStatus === 'blocked') {
-      openSettings();
+      if (permissionsStatus === 'blocked') {
+        openSettings();
+      }
+
+      dispatch(askLocationPermission(permissionsStatus));
     }
 
-    dispatch(askLocationPermission(permissionsStatus));
-  };
-
-  useEffect(() => {
-    onCheckLocationPermissions();
-
-    AppState.addEventListener('change', state => {
-      //Rvisamos si el usuario sale de la aplicacion
-      console.log({state});
-      if (state !== 'active') return;
-
+    useEffect(() => {
       onCheckLocationPermissions();
-    });
-  }, []);
 
-  return {
-    locationStatus,
+      AppState.addEventListener('change', state => {
+        //Rvisamos si el usuario sale de la aplicacion
+        console.log({state});
+        if (state !== 'active') return;
 
-    onCheckLocationPermissions,
+        onCheckLocationPermissions();
+      });
+    }, []);
+
+    return {
+      locationStatus,
+
+      onCheckLocationPermissions,
+    };
   };
 };
