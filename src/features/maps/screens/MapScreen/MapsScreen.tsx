@@ -1,7 +1,7 @@
 import { View } from 'react-native';
 import MapView from 'react-native-maps';
 import { usePermissionsHook } from '../../../../hook/usePermissionsHook';
-import { Map, MapBox  } from '../../components'
+import { Map,   MapBox} from '../../components'
 
 
 export const MapsScreen = () => {

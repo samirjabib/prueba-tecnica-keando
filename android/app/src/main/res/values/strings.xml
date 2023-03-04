@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">pruebaTecnica</string>
+    <string name="mapbox_access_token">sk.eyJ1Ijoic2FtaXJkZXYiLCJhIjoiY2xldWVreHo5MHB4aDN3b3R1bHNxaDk0ZiJ9.9twX3ZSm3OrTq7OCTi8u0g</string>
 </resources>

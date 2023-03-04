@@ -1,7 +1,7 @@
 import { View, Text } from 'react-native';
 import MapboxGL from "@rnmapbox/maps";
 
-const tokenmapbox="pk.eyJ1Ijoic2FtaXJkZXYiLCJhIjoiY2xldTViaHc2MGc3czN2cDN5eW9mNzI4MSJ9.upnIPRBDHtXGLeqchTkkJQ"
+const tokenmapbox="sk.eyJ1Ijoic2FtaXJkZXYiLCJhIjoiY2xldWNncTF1MDZjZjN4cnRjYW9xaDV6cCJ9.ouCS-aJOSxa9ldVWv5F6qw"
 
 
 MapboxGL.setAccessToken(tokenmapbox)
