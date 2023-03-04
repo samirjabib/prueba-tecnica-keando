@@ -2,6 +2,8 @@ import MapView, {Marker} from 'react-native-maps';
 import {useEffect, useState, useRef} from 'react';
 import {useLocation} from '../../../../hook/useLocation';
 import { Loading } from '../../../../components/Loading';
+import { View } from 'react-native';
+import styles from '../../screens/MapScreen/styles';
 
 
 
@@ -58,20 +60,22 @@ export const Map = () => {
     <>
       <MapView
         style={{flex: 1}}
-        showsUserLocation
+        showsMyLocationButton={false}
         initialRegion={{
           latitude: initialPosition.latitude,
           longitude: initialPosition.longitude,
           latitudeDelta: 0.0922,
           longitudeDelta: 0.0421,
         }}
+          
         onTouchStart={ () => following.current = false}
       >
         <Marker 
           draggable
           coordinate={initialPosition}
           image={require('../../../../assets/car.png')}
-        />
+        >
+        </Marker>
       </MapView>
     </>
   );
