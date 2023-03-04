@@ -8,6 +8,8 @@ interface Props {
   isActive?: boolean
 }
 
+
+
 export const Header = ({onPress, title, isActive}: Props) => {
   console.log(isActive, ' IS ACTIVE CONSOLLE.LOG')
   return (

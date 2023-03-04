@@ -15,7 +15,10 @@ import React from 'react';
 import { useImperativeHandle } from 'react';
 
 const {height: SCREEN_HEIGHT} = Dimensions.get('screen');
+console.log(SCREEN_HEIGHT)
 const MAX_TRANSLATE_Y = -SCREEN_HEIGHT + 50;
+console.log(MAX_TRANSLATE_Y)
+
 
 type BottomSheetProps = {
     children?: React.ReactNode;
@@ -75,7 +78,7 @@ export const ButtonSheet = React.forwardRef<BottomSheetRefProps, BottomSheetProp
       if (translateY.value > -SCREEN_HEIGHT / 3) {
         if (translateY.value > -SCREEN_HEIGHT / 3) {
           scrollTo(0);
-        } else if (translateY.value < -SCREEN_HEIGHT / 2) {
+        } else if (translateY.value < -SCREEN_HEIGHT / 3) {
           scrollTo(MAX_TRANSLATE_Y);
         }
       }
@@ -113,13 +116,17 @@ export const ButtonSheet = React.forwardRef<BottomSheetRefProps, BottomSheetProp
 
 const styles = StyleSheet.create({
   bottonSheetContainer: {
+    flex:1,
     height: SCREEN_HEIGHT,
+
     width: '100%',
     backgroundColor: '#00b5e0',
     position: 'absolute',
     borderRadius: 25,
     top: SCREEN_HEIGHT,
     zIndex: 3,
+    borderWidth:2,
+    
   },
   line: {
     height: 4,

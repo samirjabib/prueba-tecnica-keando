@@ -40,7 +40,10 @@ const iconsListNavigator = [
   },
 ];
 
+
 export const MenuContainer = () => {
+
+  
   const navigator = useNavigation();
 
   return (
