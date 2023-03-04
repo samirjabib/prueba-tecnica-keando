@@ -12,8 +12,7 @@ export const Fab = ({onSubmit}:any) => {
   return (
     <View style={styles.buttonContainer}>
       <TouchableNativeFeedback
-        onPress={onSubmit}
-        background={TouchableNativeFeedback.Ripple('blue', true, 30)}>
+        onPress={onSubmit}>
         <View style={{...styles.button, width: width * 0.8}}>
           <Text>Ingresar</Text>
         </View>

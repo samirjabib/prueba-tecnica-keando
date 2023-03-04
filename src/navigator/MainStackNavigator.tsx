@@ -1,14 +1,8 @@
 import {createStackNavigator} from '@react-navigation/stack';
 import {useAuthStore} from '../hook/useAuthStore';
 import { HomeScreen, LoginScreen, SettingsScreen, AddReservation, MapsScreen  } from '../features/';
+import  {RootStackParamList  } from '../types';
 
-export type RootStackParamList = {
-  HomeScreen: undefined;
-  Login: undefined;
-  MapsScreen: undefined;
-  AddReservation: undefined;
-  SettingsScreen: undefined;
-};
 
 const Stack = createStackNavigator<RootStackParamList>();
 
