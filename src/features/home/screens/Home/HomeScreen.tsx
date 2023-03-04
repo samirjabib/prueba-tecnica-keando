@@ -7,8 +7,7 @@ import {
   BottomSheetRefProps,
   FlatListUsers,
   ItemSeparator,
-  DraggableBottonSheet,
-  MenuContainer
+  DraggableBottonSheet
 } from '../../components';
 
 import styles from './styles';
@@ -17,6 +16,7 @@ import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {useAuthStore} from '../../../../hook/useAuthStore';
 import AntDesing from 'react-native-vector-icons/AntDesign';
 import {TouchableOpacity} from '@gorhom/bottom-sheet';
+import { MenuContainer } from '../../components/MenuContainer/MenuContainer';
 
 interface NavigationProps extends NativeStackScreenProps<any, any> {} //Tipamos nuestras props de los metodos de react nativae
 
@@ -25,9 +25,8 @@ interface NavigationProps extends NativeStackScreenProps<any, any> {} //Tipamos 
 export const HomeScreen = ({navigation}: NavigationProps) => {
   const {users} = useUserHook();
   const {handleLogout, status} = useAuthStore();
-  console.log(status)
 
-  const ref = useRef<BottomSheetRefProps>(null);
+  // const ref = useRef<BottomSheetRefProps>(null);
 
   // const onPress = useCallback(() => {
   //   const isActive = ref?.current?.isActive();
@@ -56,7 +55,7 @@ export const HomeScreen = ({navigation}: NavigationProps) => {
         </View>
       </View>
       <DraggableBottonSheet> 
-        <MenuContainer/>
+        <MenuContainer navigation={navigation}/>
       </DraggableBottonSheet>
       {/* <ButtonSheet ref={ref}>
         <MenuContainer/>

@@ -1,51 +1,20 @@
 import React from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
 import styles from './styles';
-import {useNavigation} from '@react-navigation/core';
 
 import AntDesing from 'react-native-vector-icons/AntDesign';
-import { RootStackParamList } from '../../../../types/navigation';
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
-const iconsListNavigator = [
-  {
-    name: 'car',
-    title: 'Agregar vehiculo',
-    component: 'AddReservation',
-  },
-
-  {
-    name: 'google-maps',
-    component: 'MapsScreen',
-    title: 'Mis Parqueaderos',
-  },
-  {
-    name: 'settings',
-    component: 'SettingsScreen',
-    title: 'settings',
-  },
-  {
-    name: 'car',
-    title: 'Agregar ',
-    component: 'AddReservation',
-  },
-
-  {
-    name: 'google-maps',
-    component: 'MapsScreen',
-    title: 'Mis Parqueaderos',
-  },
-  {
-    name: 'settings',
-    component: 'SettingsScreen',
-    title: '',
-  },
-];
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
 
 
-export const MenuContainer = ({navigation} : NativeStackScreenProps<RootStackParamList>) => {
 
-  const navigator = useNavigation();
+export const MenuContainer = ({navigation} :any ) => {
+
+
+  const navigator = () => {
+    navigation.navigate('MapsScreen')
+  }
+
 
   return (
     <View style={styles.container}>
@@ -58,7 +27,7 @@ export const MenuContainer = ({navigation} : NativeStackScreenProps<RootStackPar
         <Text style={styles.text}>Agregar vehiculos</Text>
       </View>
       <View style={styles.menuContainer}>
-        <TouchableOpacity  onPress={() => navigation.navigate('HomeScreen')} >
+        <TouchableOpacity  onPress={ navigator} >
           <View style={styles.iconContainer} >
             <AntDesing name="enviroment" size={30} color='white'/>
           </View>

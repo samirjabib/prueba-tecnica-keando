@@ -3,7 +3,8 @@ import { persistStore, persistReducer } from 'redux-persist'
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 
-import { authSlice, userSlice } from './slices';
+import { authSlice, userSlice ,permissionsSlice} from './slices';
+import { useDispatch } from 'react-redux';
 
 
 const persistConfig = {
@@ -14,6 +15,7 @@ const persistConfig = {
 const rootReducer = combineReducers({
     auth:authSlice.reducer,
     users:userSlice.reducer,
+    permissions:permissionsSlice.reducer
 })
 
 
@@ -30,6 +32,7 @@ export const store = configureStore({
 
 export type RootState = ReturnType<typeof store.getState>
 export type AppDispatch = typeof store.dispatch
+export const useAppDispatch: () => AppDispatch = useDispatch 
 
 
 export const persistor = persistStore(store)
