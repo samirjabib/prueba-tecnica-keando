@@ -1,5 +1,5 @@
 import {View, FlatList} from 'react-native';
-import {useCallback, useRef} from 'react';
+import { useCallback, useRef, useEffect } from 'react';
 
 import {useUserHook} from '../../../../hook/useUsersHook';
 
@@ -27,6 +27,16 @@ export const HomeScreen = ({navigation}: NavigationProps) => {
   const {handleLogout, status} = useAuthStore();
 
   // const ref = useRef<BottomSheetRefProps>(null);
+
+  const data = () => {
+    fetch("https://firebasestorage.googleapis.com/v0/b/portal-keando.appspot.com/o/samples%2FusersPasswords.json?alt=media&token=fbead5aa-4756-41db-a147-ac1e14a3a947")
+      .then((response) =>  response.json())
+      .then((data) => console.log(data, ' this is the console.log for data'))
+  }
+
+  useEffect( () => {
+    data()
+  },[])
 
   // const onPress = useCallback(() => {
   //   const isActive = ref?.current?.isActive();

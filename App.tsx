@@ -8,6 +8,9 @@ import {persistor} from './src/store/store';
 import {View} from 'react-native';
 import {MainStackNavigator} from './src/navigator/MainStackNavigator';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
+import {enableLatestRenderer} from 'react-native-maps';
+
+enableLatestRenderer();
 
 function App(): JSX.Element {
   return (

@@ -1,4 +1,5 @@
 <resources>
+  <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyDk-KJntjhsileGwVyuiEeI6EM-RUqWNJ0</string>
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.DayNight.NoActionBar">

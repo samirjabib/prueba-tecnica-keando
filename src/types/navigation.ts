@@ -5,4 +5,3 @@ export type RootStackParamList = {
     AddReservation: undefined;
     SettingsScreen: undefined;
   };
-  

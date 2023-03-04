@@ -1,4 +1,4 @@
-import {useSelector, useDispatch} from 'react-redux';
+import {useSelector} from 'react-redux';
 import {useEffect} from 'react';
 import {RootState, useAppDispatch} from '../store/store';
 import {
@@ -11,8 +11,9 @@ import {
 import {Platform, AppState} from 'react-native';
 import {askLocationPermission} from '../store';
 
+
 export const usePermissionsHook = () => {
-  const {locationStatus} = useSelector((state: RootState) => state.permissions);
+  const { locationStatus } = useSelector((state : RootState) => state.permissions);
 
   const dispatch = useAppDispatch();
 
@@ -25,31 +26,33 @@ export const usePermissionsHook = () => {
     } else {
       permissionsStatus = await request(
         PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION,
-      );
-
-      if (permissionsStatus === 'blocked') {
-        openSettings();
-      }
-
-      dispatch(askLocationPermission(permissionsStatus));
+      ); //Pedimos el permiso
+      // permissionsStatus = await check(PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION) //Chekamos el permiso
     }
 
-    useEffect(() => {
-      onCheckLocationPermissions();
+    if (permissionsStatus === 'blocked') {
+      openSettings();
+    }
 
-      AppState.addEventListener('change', state => {
-        //Rvisamos si el usuario sale de la aplicacion
-        console.log({state});
-        if (state !== 'active') return;
-
-        onCheckLocationPermissions();
-      });
-    }, []);
-
-    return {
-      locationStatus,
-
-      onCheckLocationPermissions,
-    };
+    dispatch(askLocationPermission(permissionsStatus));
   };
+
+  useEffect(() => {
+    onCheckLocationPermissions();
+
+    AppState.addEventListener('change', state => {
+      //Rvisamos si el usuario sale de la aplicacion
+      console.log({state});
+      if (state !== 'active') return;
+
+      onCheckLocationPermissions();
+    });
+  }, []);
+
+  return{
+    locationStatus,
+
+    onCheckLocationPermissions
+  }
+
 };

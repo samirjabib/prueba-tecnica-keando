@@ -1,1 +1,1 @@
-export * from './MapsScreen'
+export * from './MapScreen/MapsScreen'

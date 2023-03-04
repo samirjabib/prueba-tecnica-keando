@@ -1,5 +1,6 @@
 import {Text, View, StyleSheet} from 'react-native';
 
+
 export const Logo = () => {
   return (
     <View style={styles.logoContainer}>

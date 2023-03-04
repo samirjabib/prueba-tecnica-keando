@@ -1,8 +1,13 @@
 import {createStackNavigator} from '@react-navigation/stack';
 import {useAuthStore} from '../hook/useAuthStore';
-import { HomeScreen, LoginScreen, SettingsScreen, AddReservation, MapsScreen  } from '../features/';
-import  {RootStackParamList  } from '../types';
-
+import {
+  HomeScreen,
+  LoginScreen,
+  SettingsScreen,
+  AddReservation,
+  MapsScreen,
+} from '../features/';
+import {RootStackParamList} from '../types';
 
 const Stack = createStackNavigator<RootStackParamList>();
 
@@ -10,7 +15,18 @@ export const MainStackNavigator = () => {
   const {status} = useAuthStore();
 
   return (
-    <Stack.Navigator screenOptions={{headerShown: false}}>
+    <Stack.Navigator
+      screenOptions={{headerShown: false,
+       cardStyle:{
+        backgroundColor:'white'
+       }
+        
+      }}
+      initialRouteName="HomeScreen"
+      
+      
+      >
+        
       {status === 'authenticated' ? (
         <Stack.Group>
           <Stack.Screen name="HomeScreen" component={HomeScreen} />
