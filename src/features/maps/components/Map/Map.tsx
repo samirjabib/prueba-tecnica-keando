@@ -3,8 +3,7 @@ import {useEffect, useState, useRef} from 'react';
 import {useLocation} from '../../../../hook/useLocation';
 import { Loading } from '../../../../components/Loading';
 import { View } from 'react-native';
-import styles from '../../screens/MapScreen/styles';
-
+import { Fab } from '../Fab'
 
 
 
@@ -26,6 +25,7 @@ export const Map = () => {
   const mapViewRef = useRef<MapView>();
   const following = useRef<boolean>(true);
 
+
   useEffect(() => {
     followUserLocation();
     return () => {
@@ -37,7 +37,7 @@ export const Map = () => {
     if (!following.current) return;
 
     const {latitude, longitude} = userLocation;
-    mapViewRef.current?.animateCamera({
+    mapViewRef.current?.animateCamera({ //Seguimiento de la perosna
       center: {latitude, longitude},
     });
   }, [userLocation]);
@@ -59,8 +59,10 @@ export const Map = () => {
   return (
     <>
       <MapView
+        ref={ (el) => mapViewRef.current = el!}
         style={{flex: 1}}
         showsMyLocationButton={false}
+        userInterfaceStyle={"dark"}
         initialRegion={{
           latitude: initialPosition.latitude,
           longitude: initialPosition.longitude,
@@ -77,6 +79,15 @@ export const Map = () => {
         >
         </Marker>
       </MapView>
+      <Fab
+        iconName='flag'
+        onPress={centerPosition}
+        style={{
+          position:'absolute',
+          bottom:20,
+          right:20,
+        }}
+      />
     </>
   );
 };

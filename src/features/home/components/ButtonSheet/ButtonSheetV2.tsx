@@ -82,7 +82,9 @@ export const DraggableBottonSheet = ({ children} : Props) => {
   return (
     <Animated.View style={[styles.bottonSheet, bottomSheetAnimation]}>
       <View style={styles.draggableArea} {...panResponder}>
-        <View style={styles.dragHandle} {...panResponder.panHandlers} />
+        <View style={{ height:40, justifyContent:'center'}} {...panResponder.panHandlers}>
+        <View style={styles.dragHandle}  />
+        </View>
       </View>
       {children}
     </Animated.View>
@@ -95,7 +97,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     width: '100%',
     height: BOTTOM_SHEET_MAX_HEIGHT,
-    bottom: BOTTOM_SHEET_MIN_HEIGHT - BOTTOM_SHEET_MAX_HEIGHT,
+    bottom: BOTTOM_SHEET_MIN_HEIGHT - BOTTOM_SHEET_MAX_HEIGHT -30,
     ...Platform.select({
       android: {elevation: 3},
     }),

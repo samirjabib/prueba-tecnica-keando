@@ -1,10 +1,9 @@
 import {View, FlatList} from 'react-native';
-import { useCallback, useRef, useEffect } from 'react';
+import {useEffect } from 'react';
 
 import {useUserHook} from '../../../../hook/useUsersHook';
 
 import {
-  BottomSheetRefProps,
   FlatListUsers,
   ItemSeparator,
   DraggableBottonSheet
@@ -24,7 +23,7 @@ interface NavigationProps extends NativeStackScreenProps<any, any> {} //Tipamos 
 
 export const HomeScreen = ({navigation}: NavigationProps) => {
   const {users} = useUserHook();
-  const {handleLogout, status} = useAuthStore();
+  const {handleLogout, status,} = useAuthStore();
 
   // const ref = useRef<BottomSheetRefProps>(null);
 
@@ -37,6 +36,7 @@ export const HomeScreen = ({navigation}: NavigationProps) => {
   useEffect( () => {
     data()
   },[])
+
 
   // const onPress = useCallback(() => {
   //   const isActive = ref?.current?.isActive();
@@ -52,7 +52,7 @@ export const HomeScreen = ({navigation}: NavigationProps) => {
       <View style={globalStyles.container}>
         <View style={styles.iconMenu}>
           <TouchableOpacity onPress={handleLogout}>
-            <AntDesing name="back" color={'black'} size={25} />
+            <AntDesing name="arrowleft" color={'black'} size={25} />
           </TouchableOpacity>
         </View>
         <View style={styles.container}>
