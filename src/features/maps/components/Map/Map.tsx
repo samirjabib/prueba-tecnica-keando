@@ -88,6 +88,15 @@ export const Map = () => {
           right:20,
         }}
       />
+      <Fab
+      iconName='edit'
+      onPress={() => setShowPolyline( value  => !value)}
+      style={{
+        position:'absolute',
+        bottom:80,
+        right:20,
+      }}
+    />
     </>
   );
 };

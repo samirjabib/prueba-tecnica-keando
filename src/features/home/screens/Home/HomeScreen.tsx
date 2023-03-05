@@ -52,7 +52,7 @@ export const HomeScreen = ({navigation}: NavigationProps) => {
       <View style={globalStyles.container}>
         <View style={styles.iconMenu}>
           <TouchableOpacity onPress={handleLogout}>
-            <AntDesing name="arrowleft" color={'black'} size={25} />
+            <AntDesing name="arrowleft" color={'#31cbe0'} size={25} />
           </TouchableOpacity>
         </View>
         <View style={styles.container}>
@@ -65,7 +65,7 @@ export const HomeScreen = ({navigation}: NavigationProps) => {
         </View>
       </View>
       <DraggableBottonSheet> 
-        <MenuContainer navigation={navigation}/>
+        <MenuContainer navigation={navigation} />
       </DraggableBottonSheet>
       {/* <ButtonSheet ref={ref}>
         <MenuContainer/>
