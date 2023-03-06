@@ -3,6 +3,7 @@ import MapboxGL from '@rnmapbox/maps';
 import {RootStackParamList} from '../../../../types';
 import type {NativeStackScreenProps} from '@react-navigation/native-stack';
 import AntDesing from 'react-native-vector-icons/AntDesign';
+import { useLocationStore } from '../../../../hook/useLocationStore';
 
 MapboxGL.setAccessToken(
   'sk.eyJ1Ijoic2FtaXJkZXYiLCJhIjoiY2xldzhhdmw5MGF4czN4czN2bXdjdjd4ciJ9.Iw2WNk0OAaBPcj4E_ai0fA',
@@ -12,6 +13,9 @@ interface Props extends NativeStackScreenProps<RootStackParamList> {}
 
 export const MapBox = ({navigation}: Props) => {
   
+  const { userLocation } = useLocationStore()
+
+
   const navigatorBack = () => {
     navigation.goBack();
   };

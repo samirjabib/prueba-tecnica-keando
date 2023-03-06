@@ -7,6 +7,8 @@ import {Location} from '../types';
 import {useRef, useEffect} from 'react';
 
 export const useLocationStore = () => {
+  const dispatch = useDispatch();
+
   const {userLocation} = useSelector((state: RootState) => state.places);
   const watchId = useRef<number>();
   const isMounted = useRef(true);
@@ -28,8 +30,21 @@ export const useLocationStore = () => {
           });
         },
         err => reject({err}),
-        {enableHighAccuracy:true}
+        {enableHighAccuracy: true},
       );
     });
+  };
+
+  useEffect(() => {
+    getCurrentPosition().then(location => {
+        if(!isMounted) return;
+        
+    });
+  });
+
+  console.log(userLocation);
+
+  return {
+    userLocation,
   };
 };

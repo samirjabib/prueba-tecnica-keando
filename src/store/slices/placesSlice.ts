@@ -1,10 +1,10 @@
-import {PermissionStatus} from 'react-native-permissions';
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import { Location } from '../../types';
 
 export interface PlacesState {
   isLoading: boolean;
   userLocation?: Location
+  initialPosition?: Location
 }
 
 export const placesSlice = createSlice({
@@ -13,7 +13,15 @@ export const placesSlice = createSlice({
     isLoading: true,
     userLocation: undefined,
   } as PlacesState,
-  reducers: {},
+  reducers: {
+    setUserLocation : (state, {payload} : PayloadAction<Location>) => {
+      state.userLocation = payload
+    },
+    setInitialPosition: (state, { payload } : PayloadAction<Location>) => {
+      state.initialPosition = payload
+    }
+
+  },
 });
 
 export const {} = placesSlice.actions;
