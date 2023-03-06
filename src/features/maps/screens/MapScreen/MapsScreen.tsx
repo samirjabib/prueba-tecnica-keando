@@ -1,7 +1,7 @@
 import { View } from 'react-native';
 import MapView from 'react-native-maps';
 import { usePermissionsHook } from '../../../../hook/usePermissionsHook';
-import { Map,} from '../../components'
+import { Map, MapBox,} from '../../components'
 
 
 export const MapsScreen = () => {
@@ -11,8 +11,8 @@ export const MapsScreen = () => {
 
   return (
     <View style={{flex:1}}>
-    <Map/>
-    {/* <MapBox/> */}
+    {/* <Map/> */}
+    <MapBox/>
   </View>
   );
 };

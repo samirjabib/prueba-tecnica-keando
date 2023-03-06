@@ -7,11 +7,11 @@ const styles = StyleSheet.create({
   },
   iconMenu: {
     marginTop: 20,
-    marginBottom: 40,
+    marginBottom: 25,
   },
   title:{
     fontSize:24,
-    color:'#213653',
+    color:'#31cbe02',
     fontWeight:'500'
 
   },
@@ -19,13 +19,44 @@ const styles = StyleSheet.create({
     marginTop:20,
     alignItems:'center'
   },
-  
+
   image:{
-    width:120,
+    width:115,
     height:120,
     borderRadius:15,
-  }
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
 
+    elevation: 5,
+  },
+  textPark:{
+    textAlign:'center',
+    fontSize:16,
+    color:'#626261',
+    textTransform:'uppercase',
+    marginTop:22,
+    fontWeight:'600'
+  },
+  textDireccion:{
+    textAlign:'center',
+    fontSize:16,
+    color:'#626261',
+    fontWeight:'400'
+  },
+  subTitle:{
+          marginTop: 40,
+          textAlign: 'center',
+          fontSize: 14,
+          color: '#b7bdcb',
+          textTransform: 'uppercase',
+          marginBottom: 10,
+  }
+  
 });
 
 export default styles;
