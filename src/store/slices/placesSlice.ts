@@ -24,4 +24,4 @@ export const placesSlice = createSlice({
   },
 });
 
-export const {} = placesSlice.actions;
+export const {setUserLocation, setInitialPosition} = placesSlice.actions;

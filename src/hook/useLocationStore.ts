@@ -1,5 +1,6 @@
 import {useDispatch, useSelector} from 'react-redux';
 import {RootState} from '../store/store';
+import { setUserLocation, setInitialPosition } from '../store';
 
 import Geolocation from '@react-native-community/geolocation';
 
@@ -38,9 +39,11 @@ export const useLocationStore = () => {
   useEffect(() => {
     getCurrentPosition().then(location => {
         if(!isMounted) return;
-        
+        dispatch(setUserLocation(location))
+        dispatch(setInitialPosition(location))
+
     });
-  });
+  }, []);
 
   console.log(userLocation);
 
