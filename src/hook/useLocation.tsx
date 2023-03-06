@@ -3,6 +3,9 @@ import {useEffect, useState, useRef} from 'react';
 import Geolocation from '@react-native-community/geolocation';
 import {Location} from '../types';
 
+
+
+
 export const useLocation = () => {
   const [hasLocation, setHasLocation] = useState(false);
   const [routeLines, setRouteLines] = useState<Location[]>([]);

@@ -16,6 +16,7 @@ import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {Prices, SelectTime} from '../../components';
 import {DropDownSelect} from '../../../../components/DropDownSelect/DropDownSelect';
 import {FabReserve} from '../../components';
+import { RootStackParamList } from '../../../../types';
 
 export type Vehicule = {
   key: number;
@@ -34,7 +35,7 @@ const references = [
   {key: 3, value: 'Referencia 3'},
 ];
 
-interface Props extends NativeStackScreenProps<any, any> {} //Tipamos nuestras props de los metodos de react nativ
+interface Props extends NativeStackScreenProps<RootStackParamList> {}
 
 export const AddReservation = ({navigation}: Props) => {
   const [vehicule, setVehicule] = useState<Vehicule[]>([] as Vehicule[]);

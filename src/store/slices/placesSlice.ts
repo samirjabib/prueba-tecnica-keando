@@ -1,9 +1,10 @@
 import {PermissionStatus} from 'react-native-permissions';
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
+import { Location } from '../../types';
 
 export interface PlacesState {
   isLoading: boolean;
-  userLocation?: [number, number];
+  userLocation?: Location
 }
 
 export const placesSlice = createSlice({
