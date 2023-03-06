@@ -1,9 +1,12 @@
 import {StyleSheet, View, TouchableOpacity} from 'react-native';
-import MapboxGL from '@rnmapbox/maps';
-import {RootStackParamList} from '../../../../types';
+import MapboxGL, {Camera} from '@rnmapbox/maps';
+import {Location, RootStackParamList} from '../../../../types';
 import type {NativeStackScreenProps} from '@react-navigation/native-stack';
 import AntDesing from 'react-native-vector-icons/AntDesign';
-import { useLocationStore } from '../../../../hook/useLocationStore';
+import {useLocationStore} from '../../../../hook/useLocationStore';
+import {Loading} from '../../../../components/Loading';
+import {useLocation} from '../../../../hook/useLocation';
+import {useRef, useEffect} from 'react';
 
 MapboxGL.setAccessToken(
   'sk.eyJ1Ijoic2FtaXJkZXYiLCJhIjoiY2xldzhhdmw5MGF4czN4czN2bXdjdjd4ciJ9.Iw2WNk0OAaBPcj4E_ai0fA',
@@ -11,14 +14,27 @@ MapboxGL.setAccessToken(
 
 interface Props extends NativeStackScreenProps<RootStackParamList> {}
 
-export const MapBox = ({navigation}: Props) => {
-  
-  const { userLocation } = useLocationStore()
+export const MapBox = ({navigation}: any) => {
+  const {isLoading} = useLocationStore();
+  const {userLocation} = useLocation();
+  console.log(userLocation);
 
+  if (isLoading) {
+    return <Loading />;
+  }
 
   const navigatorBack = () => {
     navigation.goBack();
   };
+
+  const camera = useRef<Camera>(null);
+
+  useEffect(() => {
+    camera.current?.setCamera({
+      
+      centerCoordinate:[ userLocation.longitude,userLocation?.latitude]
+    });
+  }, []);
 
   return (
     <>
@@ -29,7 +45,12 @@ export const MapBox = ({navigation}: Props) => {
       </View>
       <View style={styles.page}>
         <View style={styles.container}>
-          <MapboxGL.MapView style={styles.map} />
+          <MapboxGL.MapView style={styles.map}>
+            <MapboxGL.Camera
+              ref={camera}
+              zoomLevel={15}
+            />
+          </MapboxGL.MapView>
         </View>
       </View>
     </>
@@ -43,8 +64,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   container: {
-    height: '100%',
-    width: '100%',
+    height: 500,
+    width: 500
   },
   map: {
     flex: 1,

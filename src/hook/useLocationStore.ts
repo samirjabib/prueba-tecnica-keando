@@ -1,6 +1,6 @@
 import {useDispatch, useSelector} from 'react-redux';
 import {RootState} from '../store/store';
-import { setUserLocation, setInitialPosition } from '../store';
+import { setUserLocation, setInitialPosition, setIsLoading } from '../store';
 
 import Geolocation from '@react-native-community/geolocation';
 
@@ -10,7 +10,7 @@ import {useRef, useEffect} from 'react';
 export const useLocationStore = () => {
   const dispatch = useDispatch();
 
-  const {userLocation} = useSelector((state: RootState) => state.places);
+  const {userLocation, isLoading } = useSelector((state: RootState) => state.places);
   const watchId = useRef<number>();
   const isMounted = useRef(true);
 
@@ -41,13 +41,12 @@ export const useLocationStore = () => {
         if(!isMounted) return;
         dispatch(setUserLocation(location))
         dispatch(setInitialPosition(location))
-
+        dispatch(setIsLoading(false))
     });
   }, []);
 
-  console.log(userLocation);
-
   return {
     userLocation,
+    isLoading
   };
 };

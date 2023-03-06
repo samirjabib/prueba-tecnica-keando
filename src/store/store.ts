@@ -3,7 +3,7 @@ import { persistStore, persistReducer } from 'redux-persist'
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 
-import { authSlice, userSlice ,permissionsSlice, placesSlice } from './slices';
+import { authSlice, userSlice ,permissionsSlice, locationSlice } from './slices';
 import { useDispatch } from 'react-redux';
 
 
@@ -16,7 +16,7 @@ const rootReducer = combineReducers({
     auth:authSlice.reducer,
     users:userSlice.reducer,
     permissions:permissionsSlice.reducer,
-    places:placesSlice.reducer
+    places:locationSlice.reducer
 })
 
 
