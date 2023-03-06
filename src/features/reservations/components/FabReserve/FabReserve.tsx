@@ -4,16 +4,14 @@ import { TextStyle } from 'react-native/Libraries/StyleSheet/StyleSheetTypes';
 
 
 type Props = {
-    onPress: () => void,
     styleButton?: StyleProp<ViewStyle>
-    textColor?: StyleProp<TextStyle>
 }
 
 export const FabReserve = ({styleButton} :Props) => {
   return (
     <View style={[styles.buttonContainer, styleButton]}>
       <TouchableOpacity>
-        <Text style={[styles.textButton]}>Button</Text>
+        <View><Text style={styles.textButton}>Button</Text></View>
       </TouchableOpacity>
     </View>
   );

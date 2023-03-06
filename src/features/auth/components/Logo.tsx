@@ -1,11 +1,10 @@
-import {Text, View, StyleSheet} from 'react-native';
+import {Text, View, StyleSheet, Image} from 'react-native';
 
 
 export const Logo = () => {
   return (
     <View style={styles.logoContainer}>
-      <Text style={styles.logo}>K</Text>
-      <Text style={styles.logoSubtitle}>Keando</Text>
+      <Image source={require('../../../assets/keando-logo.jpg')} style={{width:200, height:200, justifyContent:'center', alignItems:'center', marginLeft:19,}}/>
       <Text style={styles.textTitle}>Bienvenido a Keando</Text>
     </View>
   );

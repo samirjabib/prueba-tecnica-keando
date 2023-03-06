@@ -5,18 +5,21 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import { authSlice, userSlice ,permissionsSlice, locationSlice } from './slices';
 import { useDispatch } from 'react-redux';
+import { mapSlice } from './slices/mapSlice';
 
 
 const persistConfig = {
     key:'root',
     storage:AsyncStorage,
+    blacklist:["maps"]
 }
 
 const rootReducer = combineReducers({
     auth:authSlice.reducer,
     users:userSlice.reducer,
     permissions:permissionsSlice.reducer,
-    places:locationSlice.reducer
+    places:locationSlice.reducer,
+    map:mapSlice.reducer
 })
 
 

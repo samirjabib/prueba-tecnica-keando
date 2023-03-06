@@ -80,11 +80,9 @@ export const AddReservation = ({navigation}: Props) => {
             marginBottom:20
           }}>
           <FabReserve
-            onPress={() => console.log('precione')}
             styleButton={{backgroundColor: 'gray'}}
           />
           <FabReserve
-            onPress={() => console.log('precione')}
             styleButton={{backgroundColor: '#3cc7ec'}}
           />
         </View>

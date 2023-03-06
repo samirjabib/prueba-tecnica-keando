@@ -24,15 +24,6 @@ const styles = StyleSheet.create({
     width:115,
     height:120,
     borderRadius:15,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-
-    elevation: 5,
   },
   textPark:{
     textAlign:'center',
@@ -40,7 +31,7 @@ const styles = StyleSheet.create({
     color:'#626261',
     textTransform:'uppercase',
     marginTop:22,
-    fontWeight:'600'
+    fontWeight:'500'
   },
   textDireccion:{
     textAlign:'center',
