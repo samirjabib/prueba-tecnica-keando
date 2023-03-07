@@ -5,13 +5,13 @@ import {Loading} from '../../../../components/Loading';
 import {Fab} from '../Fab';
 import {RootStackParamList} from '../../../../types';
 import type {NativeStackScreenProps} from '@react-navigation/native-stack';
-import {TouchableOpacity, View, StyleSheet} from 'react-native';
+import {TouchableOpacity, View, StyleSheet, Text} from 'react-native';
 import AntDesing from 'react-native-vector-icons/AntDesign';
 import {
   GooglePlacesAutocomplete,
   GooglePlaceDetail,
 } from 'react-native-google-places-autocomplete';
-import { color } from 'react-native-reanimated';
+import {color} from 'react-native-reanimated';
 
 interface Props extends NativeStackScreenProps<RootStackParamList> {}
 
@@ -66,27 +66,27 @@ export const Map = ({navigation}: Props) => {
     return <Loading />;
   }
 
-  const InputAutoComplete = () => {};
 
   return (
     <>
       <View style={styles.searchContainer}>
+        <Text style={{color:'black'}}>Destination</Text>
         <GooglePlacesAutocomplete
           placeholder="Search"
+          fetchDetails
           listUnderlayColor="black"
           styles={{
             textInput: styles.input,
-            poweredContainer:{
-              backgroundColor:'#00b5e0',
-              color:'black'
+            poweredContainer: {
+              backgroundColor: '#00b5e0',
+              color: 'black',
             },
-            powered:{
-              display:'none'
+            powered: {
+              display: 'none',
             },
-            row:{
-              backgroundColor:'#00b5e0'
-            }
-            
+            row: {
+              backgroundColor: '#00b5e0',
+            },
           }}
           query={{
             key: 'AIzaSyBjkKYc5FhHD13I93mijKzBG5hv0VSVe_s',
@@ -174,16 +174,13 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.5,
     shadowRadius: 4,
     elevation: 4,
-    padding: 2,
+    padding: 8,
     zIndex: 999,
     color: 'black',
   },
   input: {
     borderColor: '#888',
-    borderWidth: 1,
     color: 'black',
+    borderWidth:1
   },
-  poweredContainer:{
-
-  }
 });
