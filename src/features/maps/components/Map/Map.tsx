@@ -1,4 +1,4 @@
-import MapView, {Marker} from 'react-native-maps';
+import MapView, {LatLng, Marker} from 'react-native-maps';
 import {useEffect, useState, useRef} from 'react';
 import {useLocation} from '../../../../hook/useLocation';
 import {Loading} from '../../../../components/Loading';
@@ -11,12 +11,21 @@ import {
   GooglePlacesAutocomplete,
   GooglePlaceDetail,
 } from 'react-native-google-places-autocomplete';
-import {color} from 'react-native-reanimated';
+import {InputAutocomplete} from '../InputComplete/InputComplete';
+import MapViewDirections from 'react-native-maps-directions';
 
 interface Props extends NativeStackScreenProps<RootStackParamList> {}
 
 export const Map = ({navigation}: Props) => {
   const [showPolyline, setShowPolyline] = useState(true);
+
+  const moveTo = async (position: LatLng) => {
+    const camera = await mapViewRef.current?.getCamera();
+    if (camera) {
+      camera.center = position;
+      mapViewRef.current?.animateCamera(camera, {duration: 1000});
+    }
+  };
 
   const {
     hasLocation,
@@ -27,6 +36,9 @@ export const Map = ({navigation}: Props) => {
     stopFollowUserLocation,
     routeLines,
   } = useLocation();
+
+  const [origin, setOrigin] = useState<LatLng | any>(initialPosition);
+  const [destination, setDestination] = useState<LatLng | any>();
 
   const mapViewRef = useRef<MapView>();
   const following = useRef<boolean>(true);
@@ -66,36 +78,52 @@ export const Map = ({navigation}: Props) => {
     return <Loading />;
   }
 
+  const onPlacedSelected = (
+    details: GooglePlaceDetail | null,
+    flag: 'origin' | 'destination',
+  ) => {
+    const set = flag === 'origin' ? setOrigin : setDestination;
+
+    const position = {
+      latitude: details?.geometry.location.lat || 0,
+      longitude: details?.geometry.location.lng || 0,
+    };
+    set(position);
+    moveTo(position);
+  };
 
   return (
     <>
       <View style={styles.searchContainer}>
-        <Text style={{color:'black'}}>Destination</Text>
-        <GooglePlacesAutocomplete
-          placeholder="Search"
-          fetchDetails
-          listUnderlayColor="black"
-          styles={{
-            textInput: styles.input,
-            poweredContainer: {
-              backgroundColor: '#00b5e0',
-              color: 'black',
-            },
-            powered: {
-              display: 'none',
-            },
-            row: {
-              backgroundColor: '#00b5e0',
-            },
+        <Text style={{color: 'black'}}>Destination</Text>
+        {/* <InputAutocomplete
+          label="origin"
+          onPlaceSelected={details => {
+            () => {
+              onPlacedSelected(details, 'origin');
+            };
           }}
-          query={{
-            key: 'AIzaSyBjkKYc5FhHD13I93mijKzBG5hv0VSVe_s',
-            language: 'es',
-          }}
-          onPress={(data, details = null) => {
-            console.log(data, details);
+        /> */}
+        <InputAutocomplete
+          label="Destination "
+          onPlaceSelected={details => {
+            onPlacedSelected(details, 'destination');
           }}
         />
+
+        <View
+          style={{
+            backgroundColor: '#00b5e0',
+            borderRadius: 2,
+            justifyContent: 'center',
+            alignItems: 'center',
+            paddingVertical: 10,
+            marginTop: 10,
+          }}>
+          <TouchableOpacity>
+            <Text style={{color: 'white'}}>Trazar ruta</Text>
+          </TouchableOpacity>
+        </View>
       </View>
       <View style={styles.iconMenu}>
         <TouchableOpacity onPress={navigatorBack}>
@@ -117,7 +145,16 @@ export const Map = ({navigation}: Props) => {
         <Marker
           draggable
           coordinate={initialPosition}
-          image={require('../../../../assets/car.png')}></Marker>
+          image={require('../../../../assets/car.png')}
+        />
+        {destination && <Marker coordinate={destination} />}
+        {origin && destination && (
+          <MapViewDirections
+            apikey="AIzaSyBjkKYc5FhHD13I93mijKzBG5hv0VSVe_s"
+            origin={origin}
+            destination={destination}
+          />
+        )}
       </MapView>
       <Fab
         iconName="flag"
@@ -181,6 +218,6 @@ const styles = StyleSheet.create({
   input: {
     borderColor: '#888',
     color: 'black',
-    borderWidth:1
+    borderWidth: 1,
   },
 });
